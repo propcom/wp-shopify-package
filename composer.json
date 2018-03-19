@@ -1,0 +1,21 @@
+{
+  "name": "propcom/wp-shopify-package",
+  "description": "Shopify plugin for wordpress",
+  "type": "wordpress-plugin",
+  "homepage": "https://github.com/propcom/wp-shopify-package",
+  "authors": [
+    {
+        "name": "Joshua Grierson",
+        "email": "joshua.grierson@propcom.co.uk"
+    }
+  ],
+  "require": {
+    "monolog/monolog": "^1.11.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WSP\\": "php-src/WordpressPlugin/",
+      "ShopifyApp\\": "php-src/ShopifyApp/"
+    }
+  }
+}
