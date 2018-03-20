@@ -43,5 +43,15 @@
 		$deactivator->handler();
 	}
 
+	function run_shopify_plugin()
+	{
+		$plugin = new WSP\WSPShopify();
+		$plugin->run();
+	}
+
 	register_activation_hook(__FILE__, 'activate_Wordpress_Shopify');
 	register_deactivation_hook(__FILE__, 'deactivate_Wordpress_Shopify');
+
+	run_shopify_plugin();
+
+?>
