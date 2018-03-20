@@ -28,4 +28,20 @@
 	if ( ! defined( 'WPINC' ) ) {
 		die;
 	}
-	
+
+	require_once plugin_dir_path(__FILE__).'vendor/autoload.php';
+
+	function activate_Wordpress_Shopify()
+	{
+		$activator = new WSP\WSPActivator();
+		$activator->handler();
+	}
+
+	function deactivate_Wordpress_Shopify()
+	{
+		$deactivator = new WSP\WPSDeactivator();
+		$deactivator->handler();
+	}
+
+	register_activation_hook(__FILE__, 'activate_Wordpress_Shopify');
+	register_deactivation_hook(__FILE__, 'deactivate_Wordpress_Shopify');
