@@ -1,29 +1,29 @@
 <?php
 
-  namespace WSP;
+namespace WSP;
+
+/**
+* Class - WSPActivator
+* @author Joshua Grierson
+*/
+
+class WSPActivator implements Interfaces\BaseActivation
+{
 
   /**
-  * Class - WSPActivator
-  * @author Joshua Grierson
+  * Constructor
   */
-
-  class WSPActivator implements Interfaces\BaseActivation
+  public function __construct()
   {
-
-    /**
-    * Constructor
-    */
-    public function __construct()
-    {
-      // instance handler
-    }
-
-    /**
-    * Handler for handling plugin state
-    */
-    public function handler()
-    {
-      // logic for handling plugin activation
-    }
+    // instance handler
   }
+
+  /**
+  * Handler for handling plugin state
+  */
+  public function handler()
+  {
+    // logic for handling plugin activation
+  }
+}
 ?>
