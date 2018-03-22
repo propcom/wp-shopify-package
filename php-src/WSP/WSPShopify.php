@@ -7,7 +7,7 @@ namespace WSP;
  *
  * @author Joshua Grierson
  * @package WSP
- */
+*/
 class WSPShopify
 {
 
@@ -80,30 +80,9 @@ class WSPShopify
 	private function load_dependencies()
 	{
 		/**
-		 * The class responsible for defining all actions that occur in the admin area.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wp_shopify-admin.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the public-facing
-		 * side of the site.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/wp_shopify-public.php';
-
-		/**
 		 * The class responsible for defining all endpoints.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/utils/wp_shopify-endpoints.php';
-
-		/**
-		 * The class responsible for defining Product class.
-		 */
-		 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/classes/Product.php';
-
-		 /**
-			 * The class responsible for defining Product_Array class.
-			 */
-			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/classes/Product_Array.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'WSP/helpers/WSPEndpoints.php';
 
 		 /**
 			 * The class responsible for defining Variant class.
@@ -114,21 +93,6 @@ class WSPShopify
 			 * The class responsible for defining Variant_Array class.
 			 */
 			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/classes/Variant_Array.php';
-
-		 /**
-			 * The class responsible for defining Collection class.
-			 */
-			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/classes/Collection.php';
-
-		 /**
-			 * The class responsible for defining Collection_Array class.
-			 */
-			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/classes/Collection_Array.php';
-
-		 /**
-			 * The class responsible for defining Filters class.
-			 */
-			 require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/classes/Filters.php';
 
 		/**
 		 * The class responsible for defining main api class.
@@ -177,7 +141,7 @@ class WSPShopify
 	 */
 	private function define_admin_hooks()
 	{
-		$plugin_admin = new Wordpress_Shopify_Admin( $this->get_WSPShopify(), $this->get_version() );
+		$plugin_admin = new \Admin\WSPAdmin( $this->get_WSPShopify(), $this->get_version() );
 
 		$this->loader->add_action( 'media_buttons', $plugin_admin, 'add_product_button' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
@@ -193,7 +157,7 @@ class WSPShopify
 	 */
 	private function define_public_hooks()
 	{
-		$plugin_public = new Wordpress_Shopify_Public( $this->get_WSPShopify(), $this->get_version() );
+		$plugin_public = new \Frontend\WSPPublic( $this->get_WSPShopify(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );

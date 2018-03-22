@@ -47,20 +47,10 @@ class WSPAdmin
 	 */
 	public function __construct( $Wordpress_Shopify, $version )
 	{
-		$this->load_dependencies();
-
 		$this->Wordpress_Shopify = $Wordpress_Shopify;
 		$this->version = $version;
 
 		$this->options = new \WSPOptions();
-	}
-
-	public function load_dependencies()
-	{
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/utils/wp_shopify-shortcodes.php';
-
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/wp_shopify-options.php';
-
 	}
 
 	/**
@@ -68,8 +58,8 @@ class WSPAdmin
 	 *
 	 * @since    1.0.0
 	 */
-	public function add_product_button () {
-
+	public function add_product_button()
+	{
 		add_thickbox();
 
 		$shopify_collections = Wordpress_Shopify_Api::forge( ENDPOINT_COLLECTIONS )->collections()->get_collections();
@@ -130,7 +120,6 @@ class WSPAdmin
 		echo ob_get_clean();
 
 		echo '<a href="#TB_inline?width=900&height=800&inlineId=wp-shopify-modal" id="insert-shopify-product" class="thickbox button" name="Shopify Products - Choose a product">Add Product</a>';
-
 	}
 
 	/**
@@ -138,7 +127,8 @@ class WSPAdmin
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -153,7 +143,6 @@ class WSPAdmin
 		 */
 
 		wp_enqueue_style( $this->Wordpress_Shopify, plugin_dir_url( __FILE__ ) . 'css/wp_shopify-admin.css', array(), $this->version, 'all' );
-
 	}
 
 	/**
@@ -161,8 +150,8 @@ class WSPAdmin
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
-
+	public function enqueue_scripts()
+	{
 		/**
 		 * This function is provided for demonstration purposes only.
 		 *
@@ -176,9 +165,7 @@ class WSPAdmin
 		 */
 
 		wp_enqueue_script( $this->Wordpress_Shopify, plugin_dir_url( __FILE__ ) . 'js/wp_shopify-admin.js', array( 'jquery' ), $this->version, false );
-
 	}
-
 }
 
 ?>
