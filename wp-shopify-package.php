@@ -29,7 +29,7 @@
 		die;
 	}
 
-	require_once plugin_dir_path(__FILE__).'vendor/autoload.php';
+	require_once realpath(__DIR__ . '/../../../../vendor/autoload.php');
 
 	function activate_Wordpress_Shopify()
 	{
